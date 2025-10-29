@@ -93,4 +93,19 @@ export class HomePage {
     await expect(this.page.getByText("Name may not be blank")).toBeVisible();
     await expect(this.page.getByText("Subject may not be blank")).toBeVisible();
   }
+
+  async emailErrorMessage() {
+    await this.nameField.fill(fullName);
+    await this.emailField.fill("teststringemail");
+    await this.phoneField.fill(userDetails.phoneNumber);
+    await this.SubjectField.fill("Email Subject");
+    await this.messageField.fill("This is a test message.");
+    await this.submitButton.click();
+  }
+
+  async emailValidationError() {
+    await expect(
+      this.page.getByText("must be a well-formed email address")
+    ).toBeVisible();
+  }
 }
