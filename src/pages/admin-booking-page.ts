@@ -9,7 +9,7 @@ export class AdminBookingPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.BookingsTab = page.getByRole("link", { name: "Bookings" });
+    this.BookingsTab = page.getByRole("link", { name: "Report" });
     this.nextButton = page.getByRole("button", { name: "Next" });
   }
 

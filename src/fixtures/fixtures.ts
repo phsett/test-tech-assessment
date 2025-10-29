@@ -3,7 +3,7 @@ import { HomePage } from "../pages/home-page";
 import { ReservationPage } from "../pages/reservation-page";
 import { AdminLoginPage } from "../pages/admin-login-page";
 import { AdminCreateRoomPage } from "../pages/admin-create-room-page";
-import { AdminBookingPage } from "../pages/admin-bookings-page";
+import { AdminBookingPage } from "../pages/admin-booking-page";
 import { AdminMessagesPage } from "../pages/admin-messages-page";
 
 type MyFixtures = {

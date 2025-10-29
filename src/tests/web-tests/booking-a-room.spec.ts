@@ -5,7 +5,7 @@ test.describe("Booking a Room", () => {
     await homePage.goToURL();
   });
 
-  test("Booking a room - Happy path @regression", async ({
+  test('Booking a room - Happy path @regression', async ({
     page,
     homePage,
     reservationPage,
@@ -29,7 +29,7 @@ test.describe("Booking a Room", () => {
     await adminBookingPage.verifyBookingCreated();
   });
 
-  test("Booking a room - Unhappy path - missing user details @regression", async ({
+  test('Booking a room - Unhappy path - missing user details @regression', async ({
     homePage,
     reservationPage,
   }) => {

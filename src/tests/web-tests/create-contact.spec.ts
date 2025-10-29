@@ -5,7 +5,7 @@ test.describe("Create Contact Message Test Suite", () => {
     await homePage.goToURL();
   });
 
-  test("Create a contact message successfully - happy path @regression", async ({
+  test('Create a contact message successfully - happy path @regression', async ({
     page,
     homePage,
     adminMessagesPage,
@@ -17,14 +17,14 @@ test.describe("Create Contact Message Test Suite", () => {
     await adminMessagesPage.checkMessageContent();
   });
 
-  test("Empty contact form validation errors @regression", async ({
+  test('Empty contact form validation errors @regression', async ({
     homePage,
   }) => {
     await homePage.submitContactFormWithMissingDetails();
     await homePage.contactFormValidationErrors();
   });
 
-  test("Email malformed validation error message @regression", async ({
+  test('Email malformed validation error message @regression', async ({
     homePage,
   }) => {
     await homePage.emailErrorMessage();
