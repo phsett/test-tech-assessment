@@ -1,5 +1,6 @@
 import { Locator, Page, expect } from "@playwright/test";
 import { adminLogin } from "../helpers/common-helpers";
+import { roomDetails } from "../constants/constants";
 
 export class AdminCreateRoomPage {
   readonly page: Page;
@@ -28,17 +29,22 @@ export class AdminCreateRoomPage {
     this.createRoomButton = page.getByRole("button", { name: "Create" });
   }
 
-  async createRoom(roomName: string = "110", roomPrice: string = "150") {
+  async createRoom() {
     await adminLogin(this.page);
-    await this.roomNameField.fill(roomName);
-    await this.roomTypeDropDown.selectOption("Suite");
-    await this.roomPriceField.fill(roomPrice);
+    await this.roomNameField.fill(roomDetails.roomName);
+    await this.roomTypeDropDown.selectOption(roomDetails.roomType);
+    await this.roomPriceField.fill(roomDetails.roomPrice);
     await this.wifiCheckbox.check();
     await this.tvCheckbox.check();
     await this.radioCheckbox.check();
     await this.refreshmentsCheckbox.check();
     await this.viewsCheckbox.check();
     await this.safeCheckbox.check();
+    await this.createRoomButton.click();
+  }
+
+  async createInvalidRoom() {
+    await adminLogin(this.page);
     await this.createRoomButton.click();
   }
 
