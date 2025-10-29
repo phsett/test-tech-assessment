@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
 
 export class AdminCreateRoomPage {
     readonly page: Page;
@@ -12,7 +12,6 @@ export class AdminCreateRoomPage {
     readonly viewsCheckbox: Locator;
     readonly safeCheckbox: Locator;
     readonly createRoomButton: Locator;
-    readonly removeRoomButton: Locator;
 
      
  constructor(page: Page) {
@@ -27,15 +26,11 @@ export class AdminCreateRoomPage {
     this.viewsCheckbox = page.locator('#viewsCheckbox');
     this.safeCheckbox = page.locator('#safeCheckbox');
     this.createRoomButton = page.getByRole('button', { name: 'Create' });
-    this.removeRoomButton = page.getByTitle('fa fa-remove roomDelete');
-
     }      
 
 async createRoom(roomName: string = '110', roomPrice: string = '150') {
-    await this.roomNameField.click();
     await this.roomNameField.fill(roomName);
-    await this.roomTypeDropDown.selectOption('Double');
-    await this.roomPriceField.click();
+    await this.roomTypeDropDown.selectOption('Suite');
     await this.roomPriceField.fill(roomPrice);
     await this.wifiCheckbox.check();
     await this.tvCheckbox.check();
@@ -46,4 +41,9 @@ async createRoom(roomName: string = '110', roomPrice: string = '150') {
     await this.createRoomButton.click();
 
     }
+
+async roomCreationErrorValidation(){
+    await expect (this.page.getByText('Room Name must be set')).toBeVisible();
+    await expect (this.page.getByText('must be greater than or equal to 1')).toBeVisible();
+}
 }

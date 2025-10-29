@@ -1,5 +1,6 @@
-import { Locator, Page } from "@playwright/test";
-import { RandomUserDetails } from "../helpers/common-helpers";
+import { Locator, Page, expect } from "@playwright/test";
+import { BASE_URL, fullName, userDetails } from "../constants/constants";   
+
 
 export class HomePage {
     readonly page: Page;
@@ -38,9 +39,8 @@ constructor(page: Page) {
     this.submitButton = page.getByRole('button', { name: 'Submit' });
     }
 
-    //Methods
     async goToURL() {
-        await this.page.goto('https://automationintesting.online/');
+        await this.page.goto(BASE_URL);
     }
 
     async enterCheckInDate(){
@@ -58,23 +58,28 @@ constructor(page: Page) {
         await this.bookRoomButton.first().click()
     }
 
-    async createContactMessage(){
+    async createContactMessage(){   
 
-        const userDetails = RandomUserDetails();
-        const name = userDetails.firstName + " " +  userDetails.lastName;   
-
-        await this.nameField.click();
-        await this.nameField.fill(name);
-        await this.emailField.click();
+        await this.nameField.fill(fullName);
         await this.emailField.fill (userDetails.email);
-        await this.phoneField.click();
         await this.phoneField.fill(userDetails.phoneNumber);
-        await this.SubjectField.click();
         await this.SubjectField.fill('Test Subject');
-        await this.messageField.click();
         await this.messageField.fill('This is a test message.');
         await this.submitButton.click();
-
-        return name;
 }
+
+    async submitContactFormWithMissingDetails(){
+        await this.submitButton.click();
+    }
+
+    async contactFormValidationErrors(){
+        await expect (this.page.getByText('Message may not be blank')).toBeVisible();
+        await expect (this.page.getByText('Message must be between 20 and 2000 characters')).toBeVisible();
+        await expect (this.page.getByText('Subject must be between 5 and 100 characters')).toBeVisible();
+        await expect (this.page.getByText('Email may not be blank')).toBeVisible();
+        await expect (this.page.getByText('Phone may not be blank')).toBeVisible();
+        await expect (this.page.getByText('Phone must be between 11 and 21 characters')).toBeVisible();
+        await expect (this.page.getByText('Name may not be blank')).toBeVisible();
+        await expect (this.page.getByText('Subject may not be blank')).toBeVisible();
+    }
 }

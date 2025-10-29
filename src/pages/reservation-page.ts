@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import { RandomUserDetails } from "../helpers/common-helpers";
+import { Locator, Page, expect } from "@playwright/test";
+import { userDetails } from "../constants/constants";
 
 export class ReservationPage {
 readonly page: Page;
@@ -23,18 +23,29 @@ constructor(page: Page) {
 
 async enterUserDetails(){
 
-    const userDetails = RandomUserDetails();
-    const firstName = userDetails.firstName;
-
-    await this.firstNameField.click();
     await this.firstNameField.fill(userDetails.firstName);
-    await this.lastNameField.click();
     await this.lastNameField.fill(userDetails.lastName);
-    await this.emailField.click();
     await this.emailField.fill (userDetails.email);
-    await this.phoneField.click();
     await this.phoneField.fill(userDetails.phoneNumber);
 
-    return firstName;
+}
+
+async bookingSuccessful(){
+    await expect (this.page.getByText('Booking Confirmed')).toBeVisible();
+}
+
+async reservationValidationErrors(){
+    await expect (this.page.getByText('must not be empty').first()).toBeVisible();
+    await expect (this.page.getByText('Lastname should not be blank')).toBeVisible();
+    await expect (this.page.getByText('Firstname should not be blank')).toBeVisible();
+    await expect (this.page.getByText('must not be empty').nth(1)).toBeVisible();
+    await expect (this.page.getByText('size must be between 11 and 21')).toBeVisible();
+    await expect (this.page.getByText('size must be between 3 and 30')).toBeVisible(); 
+    await expect (this.page.getByText('size must be between 3 and 18')).toBeVisible(); 
+}
+
+async returnHomePageVisible(){
+    await this.returnHomeButton.click();
+    await expect (this.page.getByText('Welcome to Shady Meadows B&B')).toBeVisible();
 }
 }

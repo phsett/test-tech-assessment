@@ -12,12 +12,5 @@ export class AdminLoginPage {
     this.passwordField = page.locator('#password');
     this.loginButton = page.getByRole('button', { name: 'Login' });
     }      
-
-
-
-
-
-
-
 }
 
