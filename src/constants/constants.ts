@@ -19,9 +19,10 @@ const fullName = userDetails.firstName + " " + userDetails.lastName;
 
 export { fullName };
 
+// Generates random room details using faker for use in admin room creation tests
 const roomDetails = {
   roomName: faker.number.int({ min: 100, max: 999 }).toString(),
-  roomType: Array.from(["Single", "Double", "Suite", "Family"]),
+  roomType: faker.helpers.arrayElement(["Single", "Double", "Suite", "Family"]),
   roomPrice: faker.number.int({ min: 80, max: 500 }).toString(),
 };
 
