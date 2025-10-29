@@ -5,7 +5,7 @@ test.describe("Booking a Room", () => {
     await homePage.goToURL();
   });
 
-  test('Booking a room - Happy path @regression', async ({
+  test("Booking a room - Happy path @regression", async ({
     page,
     homePage,
     reservationPage,
@@ -29,19 +29,29 @@ test.describe("Booking a Room", () => {
     await adminBookingPage.verifyBookingCreated();
   });
 
-  test('Booking a room - Unhappy path - missing user details @regression', async ({
+  test("Booking a room - Unhappy path - missing user details @regression", async ({
     homePage,
     reservationPage,
   }) => {
-    // Check Availability and navigate to reserve room screen
-    await homePage.enterCheckInDate();
-    await homePage.enterCheckOutDate();
-    await homePage.checkAvailabilityButton.click();
+    // Navigate to reserve room screen
     await homePage.clickBookRoomButton();
     await reservationPage.reserveNowButton.click();
 
     // Attempt to reserve a room without entering user details
     await reservationPage.reserveNowButton.click();
     await reservationPage.reservationValidationErrors();
+  });
+
+  test("Email validation in reservation form @regression", async ({
+    homePage,
+    reservationPage,
+  }) => {
+    // Navigate to reserve room screen
+    await homePage.clickBookRoomButton();
+    await reservationPage.reserveNowButton.click();
+
+    // Enter invalid email and attempt to reserve a room
+    await reservationPage.enterInvalidEmail();
+    await reservationPage.invalidEmailError();
   });
 });

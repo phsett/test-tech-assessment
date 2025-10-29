@@ -5,7 +5,7 @@ Test automation suite for the testing of the Shady Meadows B&B webpage - https:/
 ## Initial Setup Requirements
 
 1. Java 21 
-2. Node v20 
+2. Node v20+ 
 3. VSCode (recommended) or an IDE of your choosing
 
 ## Installation of repository

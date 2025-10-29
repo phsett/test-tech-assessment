@@ -59,4 +59,15 @@ export class ReservationPage {
       this.page.getByText("Welcome to Shady Meadows B&B")
     ).toBeVisible();
   }
+
+  async enterInvalidEmail() {
+    await this.emailField.fill("invalidEmail");
+    await this.reserveNowButton.click();
+}
+
+  async invalidEmailError() {
+    await expect(
+      this.page.getByText("must be a well-formed email address")
+    ).toBeVisible();
+  }
 }
