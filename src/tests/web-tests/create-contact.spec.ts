@@ -1,7 +1,4 @@
-import { fullName, userDetails } from '../../constants/constants';
-import { test, expect } from '../../fixtures/fixtures';
-import { adminMessagesLogIn} from '../../helpers/common-helpers';
-
+import { test } from '../../fixtures/fixtures';
 
 test.describe('Create Contact Message Test Suite', () => {
 
@@ -9,16 +6,15 @@ test.describe('Create Contact Message Test Suite', () => {
         await homePage.goToURL();
     });
 
-    test('Should create a contact message successfully', async ({ page, homePage }) => {
+    test('Create a contact message successfully', async ({ page, homePage,adminMessagesPage }) => {
 
          await homePage.createContactMessage();
 
-        //Verify contact message appears in admin messages list
-          await adminMessagesLogIn(page);
-          await expect (page.getByText(fullName)).toBeVisible();
+        //Log in to admin site and verify contact page message appears in admin messages list
+          await adminMessagesPage.verifyMessageReceived();
     });
 
-    test ('Should show validation errors when creating a contact message with missing details', async ({ homePage }) => {
+    test ('Show validation errors when creating a contact message with missing details', async ({ homePage }) => {
         await homePage.submitContactFormWithMissingDetails();
         await homePage.contactFormValidationErrors();
     });

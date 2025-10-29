@@ -4,16 +4,18 @@ import { ReservationPage } from "../pages/reservation-page";
 import { AdminLoginPage } from "../pages/admin-login-page";
 import { AdminCreateRoomPage } from "../pages/admin-create-room-page";
 import { AdminBookingPage } from "../pages/admin-bookings-page";
+import { AdminMessagesPage } from "../pages/admin-messages-page";
 
 type MyFixtures = {
     homePage: HomePage;
     reservationPage: ReservationPage;
     adminLoginPage: AdminLoginPage;
     adminCreateRoomPage: AdminCreateRoomPage;
-    adminBookingPage: AdminBookingPage;
+    adminBookingPage: AdminBookingPage; 
+    adminMessagesPage: AdminMessagesPage;
 };
 
- // Extend 'test' with our custom fixtures to avoid repetitive code in tests
+ // Extend 'test' with our custom page objects to avoid repetitive code in tests
 
 export const test = base.extend<MyFixtures>({
      homePage: async ({ page }, use) => {
@@ -31,6 +33,9 @@ export const test = base.extend<MyFixtures>({
     adminBookingPage: async ({ page }, use) => {
         await use (new AdminBookingPage(page))
     },
+    adminMessagesPage: async ({ page }, use) => {
+        await use (new AdminMessagesPage(page))
+    }   
 })
 
 export { expect } from "@playwright/test";

@@ -1,6 +1,4 @@
 import { test, expect } from '../../fixtures/fixtures';
-import { adminReportLogIn} from '../../helpers/common-helpers';
-import { userDetails } from '../../constants/constants';
 
 test.describe('Booking a Room', () => {
 
@@ -25,8 +23,7 @@ test ('Booking a room - Happy path @regression' , async ({ page, homePage, reser
   await reservationPage.returnHomePageVisible();
   
 
-  //Verify booking appears in admin bookings list using name of user from constants file
-  await adminReportLogIn(page);
+  //Login to admin site and verify booking appears in admin bookings list using name of user from constants file
   await adminBookingPage.verifyBookingCreated();
 
 });

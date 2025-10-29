@@ -1,12 +1,7 @@
 import { test, expect } from '../../fixtures/fixtures';
-import { adminLogIn } from '../../helpers/common-helpers';
 
 
 test.describe('Creating a Room', () => {
-
-    test.beforeEach(async ({ page }) => {
-        await adminLogIn(page);
-    });
 
 test ('Log in to Admin Page and add room @smoke' , async ({ page, adminCreateRoomPage }) => {
 // This test logs in and creates a new room before verifying that room is added to the list

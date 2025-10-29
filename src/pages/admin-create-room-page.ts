@@ -1,4 +1,5 @@
 import { Locator, Page, expect } from "@playwright/test";
+import { adminLogin } from "../helpers/common-helpers";
 
 export class AdminCreateRoomPage {
     readonly page: Page;
@@ -29,6 +30,7 @@ export class AdminCreateRoomPage {
     }      
 
 async createRoom(roomName: string = '110', roomPrice: string = '150') {
+    await adminLogin(this.page);
     await this.roomNameField.fill(roomName);
     await this.roomTypeDropDown.selectOption('Suite');
     await this.roomPriceField.fill(roomPrice);
