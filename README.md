@@ -1,5 +1,7 @@
 # Shady Meadows B&B Test Suite
 
+Test automation suite for the testing of the Shady Meadows B&B webpage - https://automationintesting.online/
+
 ## Initial Setup Requirements
 
 1. Java 21 
@@ -30,7 +32,7 @@ This command runs the tests in headless mode. A report is generated and opened a
 
 This command runs the test in headed mode. A report is generated and opened afterwards showing the results of the run. 
 
-` npx playwright test --grep @regression `
+` npx playwright test -g @regression `
 
 This command runs all tests with the '@regression' tag. This can be adapted for any tag in the repository (e.g. @accessibility)
 
@@ -38,11 +40,25 @@ This command runs all tests with the '@regression' tag. This can be adapted for 
 
 This command runs a specific test file depending on which you specify - e.g. 'admin-create-room.spec.ts' 
 
-`npx playwright test --grep 'test name' `
+`npx playwright test -g 'test name' `
 
 This command can be used to run a specific test within a file based on the name - e.g. 'Booking a Room - Happy Path'
 
 ### Playwright Test Extension for VSCode (Optional)
+
+A useful extension for running tests outside of the command line. 
+
+Search for 'Playwright Test for VSCode' in the extensions market place. 
+
+Install the extension and follow the instructions to install and utilise on the details page. 
+
+## Repository Coding Practices 
+
+The repository utilises a page-object model for tests. 
+
+Each page has a specific [page].ts file created for the functions and locators utilised within that page. 
+
+Each new page must be added to the [fixtures].ts file to ensure they can be used effectively. 
 
 
 
