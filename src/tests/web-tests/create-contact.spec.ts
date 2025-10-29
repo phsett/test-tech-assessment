@@ -12,8 +12,9 @@ test.describe("Create Contact Message Test Suite", () => {
   }) => {
     await homePage.createContactMessage();
 
-    //Log in to admin site and verify contact page message appears in admin messages list
+    //Log in to admin site and verify contact page message appears in admin messages list and content is correct
     await adminMessagesPage.verifyMessageReceived();
+    await adminMessagesPage.checkMessageContent();
   });
 
   test("Empty contact form validation errors @regression", async ({
