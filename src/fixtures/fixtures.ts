@@ -7,35 +7,35 @@ import { AdminBookingPage } from "../pages/admin-bookings-page";
 import { AdminMessagesPage } from "../pages/admin-messages-page";
 
 type MyFixtures = {
-    homePage: HomePage;
-    reservationPage: ReservationPage;
-    adminLoginPage: AdminLoginPage;
-    adminCreateRoomPage: AdminCreateRoomPage;
-    adminBookingPage: AdminBookingPage; 
-    adminMessagesPage: AdminMessagesPage;
+  homePage: HomePage;
+  reservationPage: ReservationPage;
+  adminLoginPage: AdminLoginPage;
+  adminCreateRoomPage: AdminCreateRoomPage;
+  adminBookingPage: AdminBookingPage;
+  adminMessagesPage: AdminMessagesPage;
 };
 
- // Extend 'test' with our custom page objects to avoid repetitive code in tests
+// Extend 'test' with our custom page objects to avoid repetitive code in tests
 
 export const test = base.extend<MyFixtures>({
-     homePage: async ({ page }, use) => {
-        await use (new HomePage(page))
-    }, 
-    reservationPage: async ({ page }, use) => {
-        await use (new ReservationPage(page))
-    },
-    adminLoginPage: async ({ page }, use) => {
-        await use (new AdminLoginPage(page))
-    },
-    adminCreateRoomPage: async ({ page }, use) => {
-        await use (new AdminCreateRoomPage(page))
-    },  
-    adminBookingPage: async ({ page }, use) => {
-        await use (new AdminBookingPage(page))
-    },
-    adminMessagesPage: async ({ page }, use) => {
-        await use (new AdminMessagesPage(page))
-    }   
-})
+  homePage: async ({ page }, use) => {
+    await use(new HomePage(page));
+  },
+  reservationPage: async ({ page }, use) => {
+    await use(new ReservationPage(page));
+  },
+  adminLoginPage: async ({ page }, use) => {
+    await use(new AdminLoginPage(page));
+  },
+  adminCreateRoomPage: async ({ page }, use) => {
+    await use(new AdminCreateRoomPage(page));
+  },
+  adminBookingPage: async ({ page }, use) => {
+    await use(new AdminBookingPage(page));
+  },
+  adminMessagesPage: async ({ page }, use) => {
+    await use(new AdminMessagesPage(page));
+  },
+});
 
 export { expect } from "@playwright/test";

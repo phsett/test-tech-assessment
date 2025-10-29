@@ -6,7 +6,7 @@ test.describe('Create Contact Message Test Suite', () => {
         await homePage.goToURL();
     });
 
-    test('Create a contact message successfully', async ({ page, homePage,adminMessagesPage }) => {
+    test('Create a contact message successfully @regression', async ({ page, homePage,adminMessagesPage }) => {
 
          await homePage.createContactMessage();
 
@@ -14,7 +14,7 @@ test.describe('Create Contact Message Test Suite', () => {
           await adminMessagesPage.verifyMessageReceived();
     });
 
-    test ('Show validation errors when creating a contact message with missing details', async ({ homePage }) => {
+    test ('Show validation errors when creating a contact message with missing details @regression', async ({ homePage }) => {
         await homePage.submitContactFormWithMissingDetails();
         await homePage.contactFormValidationErrors();
     });
