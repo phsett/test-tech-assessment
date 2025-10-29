@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { AdminCreateRoomPage } from "../pages/admin-create-room-page";
 
 const BASE_URL = "https://automationintesting.online/";
 export { BASE_URL };
