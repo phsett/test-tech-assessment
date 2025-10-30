@@ -14,5 +14,5 @@ const AXE_TAGS = [
 // Function to check for accessibility violations on a given page
 export async function expectNoAccessibilityViolations(page: any) {
   const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
-  expect(results.violations).toEqual([0]);
+  expect(results.violations).toEqual([]);
 }
