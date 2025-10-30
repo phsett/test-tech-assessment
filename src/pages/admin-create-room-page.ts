@@ -6,6 +6,7 @@ export class AdminCreateRoomPage {
   readonly page: Page;
   readonly roomNameField: Locator;
   readonly roomTypeDropDown: Locator;
+  readonly roomAccessibleDropDown:Locator;
   readonly roomPriceField: Locator;
   readonly wifiCheckbox: Locator;
   readonly tvCheckbox: Locator;
@@ -19,6 +20,7 @@ export class AdminCreateRoomPage {
     this.page = page;
     this.roomNameField = page.getByTestId("roomName");
     this.roomTypeDropDown = page.locator("#type");
+    this.roomAccessibleDropDown = page.locator("#accessible");
     this.roomPriceField = page.locator("#roomPrice");
     this.wifiCheckbox = page.locator("#wifiCheckbox");
     this.tvCheckbox = page.locator("#tvCheckbox");
@@ -33,6 +35,7 @@ export class AdminCreateRoomPage {
     await adminLogin(this.page);
     await this.roomNameField.fill(roomDetails.roomName);
     await this.roomTypeDropDown.selectOption(roomDetails.roomType);
+    await this.roomAccessibleDropDown.selectOption(roomDetails.roomAccessible);
     await this.roomPriceField.fill(roomDetails.roomPrice);
     await this.wifiCheckbox.check();
     await this.tvCheckbox.check();

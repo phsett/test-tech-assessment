@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from "@playwright/test";
-import { BASE_URL, fullName, userDetails } from "../constants/constants";
+import { BASE_URL, fullName, userDetails, contactUserDetails } from "../constants/constants";
 
 export class HomePage {
   readonly page: Page;
@@ -66,8 +66,8 @@ export class HomePage {
 
   async createContactMessage() {
     await this.nameField.fill(fullName);
-    await this.emailField.fill(userDetails.email);
-    await this.phoneField.fill(userDetails.phoneNumber);
+    await this.emailField.fill(contactUserDetails.email);
+    await this.phoneField.fill(contactUserDetails.phoneNumber);
     await this.SubjectField.fill("Test Subject");
     await this.messageField.fill("This is a test message.");
     await this.submitButton.click();
@@ -97,7 +97,7 @@ export class HomePage {
   async emailErrorMessage() {
     await this.nameField.fill(fullName);
     await this.emailField.fill("teststringemail");
-    await this.phoneField.fill(userDetails.phoneNumber);
+    await this.phoneField.fill(contactUserDetails.phoneNumber);
     await this.SubjectField.fill("Email Subject");
     await this.messageField.fill("This is a test message.");
     await this.submitButton.click();
