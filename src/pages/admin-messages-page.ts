@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from "@playwright/test";
-import { fullName, userDetails } from "../constants/constants";
+import { contactUserDetails, fullName, userDetails } from "../constants/constants";
 import { adminLogin } from "../helpers/common-helpers";
 
 export class AdminMessagesPage {
@@ -21,8 +21,8 @@ export class AdminMessagesPage {
 
   async checkMessageContent() {
     await this.page.getByText(fullName).click();
-    await expect(this.page.getByText(userDetails.phoneNumber)).toBeVisible();
-    await expect(this.page.getByText(userDetails.email)).toBeVisible();
+    await expect(this.page.getByText(contactUserDetails.phoneNumber)).toBeVisible();
+    await expect(this.page.getByText(contactUserDetails.email)).toBeVisible();
     await expect(this.page.getByText("This is a test message")).toBeVisible();
   }
 }
