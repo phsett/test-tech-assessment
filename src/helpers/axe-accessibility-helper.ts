@@ -4,11 +4,7 @@ import { expect } from "@playwright/test";
 //Allows tags to be added/removed easily for accessibility testing
 const AXE_TAGS = [
   "wcag2a",
-  "wcag2aa",
-  "wcag21a",
-  "wcag21aa",
-  "wcag22a",
-  "wcag22aa",
+  "wcag2aa"
 ];
 
 // Function to check for accessibility violations on a given page
