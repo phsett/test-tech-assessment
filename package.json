@@ -1,7 +1,7 @@
 {
   "name": "test-tech-assessment",
   "version": "1.0.0",
-  "description": "",
+  "description": "Technical assessment - focussing on automation of Shady Meadows B&B website.",
   "main": "index.js",
   "scripts": {},
   "repository": {
